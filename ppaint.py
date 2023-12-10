@@ -53,17 +53,18 @@ class PaintApp:
 
     def paint(self, event):
         x, y = event.x, event.y
-        self.canvas.create_line(
-            self.last_x,
-            self.last_y,
-            x,
-            y,
-            fill=self.color,
-            width=self.size_slider.get(),
-            capstyle=tk.ROUND,
-            smooth=tk.TRUE,
-            splinesteps=36,
-        )
+        if self.last_x > 0 or self.last_y > 0:
+            self.canvas.create_line(
+                self.last_x,
+                self.last_y,
+                x,
+                y,
+                fill=self.color,
+                width=self.size_slider.get(),
+                capstyle=tk.ROUND,
+                smooth=tk.TRUE,
+                splinesteps=36,
+            )
         self.last_x = x
         self.last_y = y
 
